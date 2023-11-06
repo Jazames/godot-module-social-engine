@@ -1,0 +1,18 @@
+# SCsub
+Import('env')
+
+env_soceng = env.Clone()
+
+SConscript('social-engine/SCsub')
+
+#add register_types and wrapper to the build
+env_soceng.add_source_files(env.modules_sources,"*.cpp") # just add all cpp files to the build
+
+env_soceng.Append(CPPPATH=["social-engine/llamaCpp"])
+env_soceng.Append(CPPPATH=["social-engine/llamaCpp/common"])
+env_soceng.Append(CPPPATH=["social-engine/bert.cpp"])
+env_soceng.Append(CPPPATH=["social-engine/SocialEngine"])
+#
+#env_soceng.add_source_files(env.modules_sources,"*.cpp") # just add all cpp files to the build
+
+
