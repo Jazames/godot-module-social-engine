@@ -3,7 +3,6 @@
 
 
 #include "core/object/ref_counted.h"
-#include "social.h"
 
 
 class SocialEngine : public RefCounted 
@@ -20,7 +19,7 @@ protected:
 public:
     String generate_npc_response(String dialog);
 
-    SocialEngine() = default;
+    SocialEngine();
 };
 
 

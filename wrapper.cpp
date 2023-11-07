@@ -1,5 +1,7 @@
 
 #include "wrapper.h"
+#include "social.h"
+
 
 String SocialEngine::generate_npc_response(String dialogue)
 {
@@ -16,3 +18,8 @@ void SocialEngine::_bind_methods()
     ClassDB::bind_method(D_METHOD("generate_npc_response", "dialogue"), &SocialEngine::generate_npc_response);
 } 
 //*/
+
+SocialEngine::SocialEngine()
+{
+	//nothing to do here
+}
