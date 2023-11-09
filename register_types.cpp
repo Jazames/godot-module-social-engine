@@ -7,8 +7,9 @@
 //*
 void initialize_social_engine_module(ModuleInitializationLevel p_level)
 {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-			return;
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
+	{
+		return;
 	}
 
     ClassDB::register_class<SocialEngine>();
@@ -19,8 +20,9 @@ void initialize_social_engine_module(ModuleInitializationLevel p_level)
 
 void uninitialize_social_engine_module(ModuleInitializationLevel p_level)
 {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
-			return;
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE)
+	{
+		return;
 	}
     //nothing to do here
 }

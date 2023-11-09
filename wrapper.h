@@ -1,13 +1,16 @@
 #ifndef WRAPPER_H
 #define WRAPPER_H
 
+//#include "core/object/ref_counted.h"
 
-#include "core/object/ref_counted.h"
+#include "core/object/class_db.h"
 
 
-class SocialEngine : public RefCounted 
+class SocialEngine : public Object
 {
-    GDCLASS(SocialEngine, RefCounted);
+public:
+
+	GDCLASS(SocialEngine, Object);
 
 protected:
     static void _bind_methods();

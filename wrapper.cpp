@@ -1,6 +1,8 @@
 
 #include "wrapper.h"
 #include "social.h"
+#include <iostream>
+#include "core/object/object.h"
 
 
 String SocialEngine::generate_npc_response(String dialogue)
@@ -21,5 +23,8 @@ void SocialEngine::_bind_methods()
 
 SocialEngine::SocialEngine()
 {
-	//nothing to do here
+	std::cout << "SocialEngine::SocialEngine() called\n" << std::endl;
+	std::string what = get_default_response("hey hey you you");
+
+	std::cout << what << std::endl;
 }
