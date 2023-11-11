@@ -36,6 +36,7 @@ public:
         return &instance;
     }
     String generate_npc_response(String dialog);
+	~SocialEngineServer();
 
 private:
     SocialEngineServer();
