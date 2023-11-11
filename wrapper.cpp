@@ -26,8 +26,8 @@ void SocialEngineServer::_bind_methods()
 SocialEngineServer::SocialEngineServer()
 {
 	std::cout << "SocialEngine::SocialEngine() called\n" << std::endl;
-	init_social_engine();
-	//std::string what = get_default_response("hey hey you you");
+	//init_social_engine();
+	//std::string what = get_default_response("Hello.");
 	//std::cout << what << std::endl;
 }
 
