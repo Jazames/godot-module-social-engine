@@ -4,13 +4,24 @@
 //#include "core/object/ref_counted.h"
 
 #include "core/object/class_db.h"
+#include "core/templates/rid.h"
 
 
-class SocialEngine : public Object
+/*
+class SocialEngineResponse : public RID_Data
+{
+public:
+    RID self;
+
+    String response;
+};
+*/
+
+class SocialEngineServer : public Object
 {
 public:
 
-	GDCLASS(SocialEngine, Object);
+	GDCLASS(SocialEngineServer, Object);
 
 protected:
     static void _bind_methods();
@@ -20,9 +31,14 @@ protected:
     }
     */
 public:
+    static SocialEngineServer* get_singleton() {
+        static SocialEngineServer instance;  // Guaranteed to be destroyed; Instantiated on first use
+        return &instance;
+    }
     String generate_npc_response(String dialog);
 
-    SocialEngine();
+private:
+    SocialEngineServer();
 };
 
 

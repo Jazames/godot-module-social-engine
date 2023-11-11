@@ -12,7 +12,7 @@ void initialize_social_engine_module(ModuleInitializationLevel p_level)
 		return;
 	}
 
-    ClassDB::register_class<SocialEngine>();
+    ClassDB::register_class<SocialEngineServer>();
     //ObjectTypeDB::register_type<Appearance>();
     //ObjectTypeDB::register_type<Knowledge>();
     //ObjectTypeDB::register_type<Personality>();
