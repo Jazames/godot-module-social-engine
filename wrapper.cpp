@@ -15,6 +15,11 @@ String SocialEngineServer::generate_npc_response(String dialogue)
     return response;
 }
 
+void SocialEngineServer::load_LLMs()
+{
+	init_social_engine();
+}
+
 
 //*
 void SocialEngineServer::_bind_methods()
