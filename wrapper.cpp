@@ -32,7 +32,7 @@ SocialEngineServer::SocialEngineServer()
 {
 	std::cout << "SocialEngine::SocialEngine() called\n" << std::endl;
 	//init_social_engine();
-	//std::string what = get_default_response("Hello.");
+	//std::string what = get_default_response("Where can I find a tincture to heal my headache?");
 	//std::cout << what << std::endl;
 }
 
