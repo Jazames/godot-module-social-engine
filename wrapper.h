@@ -5,17 +5,39 @@
 
 #include "core/object/class_db.h"
 #include "core/templates/rid.h"
+#include "core/object/ref_counted.h"
+#include "social-engine/SocialEngine/social.h"
 
 
-/*
-class SocialEngineResponse : public RID_Data
+
+class SocialEngineResponse : public RefCounted
 {
+	GDCLASS(SocialEngineResponse, RefCounted);
 public:
     RID self;
 
-    String response;
+    String get_response();
+	bool is_complete();
+
+	SocialEngineResponse();
+	void set_response_ptr(std::shared_ptr<DialogueResponse> ptr);
+
+	SocialEngineResponse(const SocialEngineResponse &other);
+	SocialEngineResponse(SocialEngineResponse &&other) noexcept;
+	SocialEngineResponse &operator=(SocialEngineResponse &&other) noexcept;
+
+protected:
+	static void _bind_methods();
+
+private:
+	std::shared_ptr<DialogueResponse> response_ptr;
 };
-*/
+
+
+
+
+
+
 
 class SocialEngineServer : public Object
 {
@@ -35,7 +57,7 @@ public:
         static SocialEngineServer instance;  // Guaranteed to be destroyed; Instantiated on first use
         return &instance;
     }
-    String generate_npc_response(String dialog);
+	Ref<SocialEngineResponse> generate_npc_response(String dialog);
 	void load_LLMs();
 	~SocialEngineServer();
 
