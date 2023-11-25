@@ -89,6 +89,7 @@ void SocialEngineServer::load_LLMs()
 void SocialEngineServer::_bind_methods()
 {
     ClassDB::bind_method(D_METHOD("generate_npc_response", "dialogue"), &SocialEngineServer::generate_npc_response);
+	ClassDB::bind_method(D_METHOD("load_LLMs"), &SocialEngineServer::load_LLMs);
 } 
 //*/
 
