@@ -60,10 +60,14 @@ SocialEngineResponse &SocialEngineResponse::operator=(SocialEngineResponse &&oth
 	return *this;
 }
 
-Ref<SocialEngineResponse> SocialEngineServer::generate_npc_response(String dialogue) {
+Ref<SocialEngineResponse> SocialEngineServer::generate_npc_response(String dialogue, Ref<SocialEnginePersonality> personality) {
     std::string words = std::string(dialogue.ascii().get_data());
 
-	std::shared_ptr<DialogueResponse> r_ptr = get_default_response(words);
+	Appearance appearance = Appearance();//TODO: have this passed in
+	Knowledge knowledge = Knowledge();//TODO: have this passed in
+
+	std::shared_ptr<DialogueResponse> r_ptr = get_npc_response(words, appearance, personality.ptr()->get_underlying_personality(), knowledge);
+	//std::shared_ptr<DialogueResponse> r_ptr = get_default_response(words);
 	//SocialEngineResponse response;
 	//response.set_response_ptr(r_ptr);
 
@@ -88,7 +92,7 @@ void SocialEngineServer::load_LLMs()
 //*
 void SocialEngineServer::_bind_methods()
 {
-    ClassDB::bind_method(D_METHOD("generate_npc_response", "dialogue"), &SocialEngineServer::generate_npc_response);
+	ClassDB::bind_method(D_METHOD("generate_npc_response", "dialogue", "personality"), &SocialEngineServer::generate_npc_response);
 	ClassDB::bind_method(D_METHOD("load_LLMs"), &SocialEngineServer::load_LLMs);
 } 
 //*/
@@ -106,48 +110,6 @@ SocialEngineServer::~SocialEngineServer()
 	std::cout << "SocialEngine::~SocialEngine() called" << std::endl;
 	deinit_social_engine();
 }
-
-
-
-
-
-	// Big5Traits Getters and Setters
-/*
-void set_enthusiasm(double value);
-double get_enthusiasm() const;
-void set_assertiveness(double value);
-double get_assertiveness() const;
-void set_withdrawal(double value);
-double get_withdrawal() const;
-void set_volatility(double value);
-double get_volatility() const;
-void set_compassion(double value);
-double get_compassion() const;
-void set_politeness(double value);
-double get_politeness() const;
-void set_industriousness(double value);
-double get_industriousness() const;
-void set_orderliness(double value);
-double get_orderliness() const;
-void set_openness(double value);
-double get_openness() const;
-void set_intellect(double value);
-double get_intellect() const;
-
-// MoralFoundations Getters and Setters
-void set_care_harm(double value);
-double get_care_harm() const;
-void set_fairness_cheating(double value);
-double get_fairness_cheating() const;
-void set_loyalty_betrayal(double value);
-double get_loyalty_betrayal() const;
-void set_authority_subversion(double value);
-double get_authority_subversion() const;
-void set_sanctity_degradation(double value);
-double get_sanctity_degradation() const;
-void set_liberty_oppression(double value);
-double get_liberty_oppression() const;
-*/
 
 // Big5Traits
 void SocialEnginePersonality::set_enthusiasm(double value) { personality.traits.Enthusiasm = value; }
@@ -197,6 +159,8 @@ void SocialEnginePersonality::set_personality_override(String value) { personali
 String SocialEnginePersonality::get_personality_override() const { return String(personality.personality_override.c_str()); }
 void SocialEnginePersonality::set_personality_modifier(String value) { personality.personality_modifier = value.utf8().get_data(); }
 String SocialEnginePersonality::get_personality_modifier() const { return String(personality.personality_modifier.c_str()); }
+
+Personality SocialEnginePersonality::get_underlying_personality() const { return personality; }
 
 void SocialEnginePersonality::_bind_methods() {
 	// Big5Traits
@@ -271,8 +235,6 @@ void SocialEnginePersonality::_bind_methods() {
 	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::INT, "age"), "set_age", "get_age");
 	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::STRING, "personality_override"), "set_personality_override", "get_personality_override");
 	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::STRING, "personality_modifier"), "set_personality_modifier", "get_personality_modifier");
-
-
 }
 
 

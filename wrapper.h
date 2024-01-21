@@ -88,7 +88,7 @@ public:
 	void set_personality_modifier(String value);
 	String get_personality_modifier() const;
 
-
+	Personality get_underlying_personality() const;
 protected:
 	static void _bind_methods();
 private:
@@ -141,7 +141,7 @@ public:
         static SocialEngineServer instance;  // Guaranteed to be destroyed; Instantiated on first use
         return &instance;
     }
-	Ref<SocialEngineResponse> generate_npc_response(String dialog);
+	Ref<SocialEngineResponse> generate_npc_response(String dialog, Ref<SocialEnginePersonality> personality);
 	void load_LLMs();
 	~SocialEngineServer();
 
