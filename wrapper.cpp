@@ -106,3 +106,179 @@ SocialEngineServer::~SocialEngineServer()
 	std::cout << "SocialEngine::~SocialEngine() called" << std::endl;
 	deinit_social_engine();
 }
+
+
+
+
+
+	// Big5Traits Getters and Setters
+/*
+void set_enthusiasm(double value);
+double get_enthusiasm() const;
+void set_assertiveness(double value);
+double get_assertiveness() const;
+void set_withdrawal(double value);
+double get_withdrawal() const;
+void set_volatility(double value);
+double get_volatility() const;
+void set_compassion(double value);
+double get_compassion() const;
+void set_politeness(double value);
+double get_politeness() const;
+void set_industriousness(double value);
+double get_industriousness() const;
+void set_orderliness(double value);
+double get_orderliness() const;
+void set_openness(double value);
+double get_openness() const;
+void set_intellect(double value);
+double get_intellect() const;
+
+// MoralFoundations Getters and Setters
+void set_care_harm(double value);
+double get_care_harm() const;
+void set_fairness_cheating(double value);
+double get_fairness_cheating() const;
+void set_loyalty_betrayal(double value);
+double get_loyalty_betrayal() const;
+void set_authority_subversion(double value);
+double get_authority_subversion() const;
+void set_sanctity_degradation(double value);
+double get_sanctity_degradation() const;
+void set_liberty_oppression(double value);
+double get_liberty_oppression() const;
+*/
+
+// Big5Traits
+void SocialEnginePersonality::set_enthusiasm(double value) { personality.traits.Enthusiasm = value; }
+double SocialEnginePersonality::get_enthusiasm() const { return personality.traits.Enthusiasm; }
+void SocialEnginePersonality::set_assertiveness(double value) { personality.traits.Assertiveness = value; }
+double SocialEnginePersonality::get_assertiveness() const { return personality.traits.Assertiveness; }
+void SocialEnginePersonality::set_withdrawal(double value) { personality.traits.Withdrawal = value; }
+double SocialEnginePersonality::get_withdrawal() const { return personality.traits.Withdrawal; }
+void SocialEnginePersonality::set_volatility(double value) { personality.traits.Volatility = value; }
+double SocialEnginePersonality::get_volatility() const { return personality.traits.Volatility; }
+void SocialEnginePersonality::set_compassion(double value) { personality.traits.Compassion = value; }
+double SocialEnginePersonality::get_compassion() const { return personality.traits.Compassion; }
+void SocialEnginePersonality::set_politeness(double value) { personality.traits.Politeness = value; }
+double SocialEnginePersonality::get_politeness() const { return personality.traits.Politeness; }
+void SocialEnginePersonality::set_industriousness(double value) { personality.traits.Industriousness = value; }
+double SocialEnginePersonality::get_industriousness() const { return personality.traits.Industriousness; }
+void SocialEnginePersonality::set_orderliness(double value) { personality.traits.Orderliness = value; }
+double SocialEnginePersonality::get_orderliness() const { return personality.traits.Orderliness; }
+void SocialEnginePersonality::set_openness(double value) { personality.traits.Openness = value; }
+double SocialEnginePersonality::get_openness() const { return personality.traits.Openness; }
+void SocialEnginePersonality::set_intellect(double value) { personality.traits.Intellect = value; }
+double SocialEnginePersonality::get_intellect() const { return personality.traits.Intellect; }
+
+
+// MoralFoundations
+void SocialEnginePersonality::set_care_harm(double value) { personality.morals.care_harm = value; }
+double SocialEnginePersonality::get_care_harm() const { return personality.morals.care_harm; }
+void SocialEnginePersonality::set_fairness_cheating(double value) { personality.morals.fairness_cheating = value; }
+double SocialEnginePersonality::get_fairness_cheating() const { return personality.morals.fairness_cheating; }
+void SocialEnginePersonality::set_loyalty_betrayal(double value) { personality.morals.loyalty_betrayal = value; }
+double SocialEnginePersonality::get_loyalty_betrayal() const { return personality.morals.loyalty_betrayal; }
+void SocialEnginePersonality::set_authority_subversion(double value) { personality.morals.authority_subversion = value; }
+double SocialEnginePersonality::get_authority_subversion() const { return personality.morals.authority_subversion; }
+void SocialEnginePersonality::set_sanctity_degradation(double value) { personality.morals.sanctity_degradation = value; }
+double SocialEnginePersonality::get_sanctity_degradation() const { return personality.morals.sanctity_degradation; }
+void SocialEnginePersonality::set_liberty_oppression(double value) { personality.morals.liberty_oppression = value; }
+double SocialEnginePersonality::get_liberty_oppression() const { return personality.morals.liberty_oppression; }
+
+// Personality
+void SocialEnginePersonality::set_intelligence(double value) { personality.intelligence = value; }
+double SocialEnginePersonality::get_intelligence() const { return personality.intelligence; }
+void SocialEnginePersonality::set_maturity(double value) { personality.maturity = value; }
+double SocialEnginePersonality::get_maturity() const { return personality.maturity; }
+void SocialEnginePersonality::set_age(int value) { personality.age = value; }
+int SocialEnginePersonality::get_age() const { return personality.age; }
+void SocialEnginePersonality::set_personality_override(String value) { personality.personality_override = value.utf8().get_data(); }
+String SocialEnginePersonality::get_personality_override() const { return String(personality.personality_override.c_str()); }
+void SocialEnginePersonality::set_personality_modifier(String value) { personality.personality_modifier = value.utf8().get_data(); }
+String SocialEnginePersonality::get_personality_modifier() const { return String(personality.personality_modifier.c_str()); }
+
+void SocialEnginePersonality::_bind_methods() {
+	// Big5Traits
+	ClassDB::bind_method(D_METHOD("set_enthusiasm", "value"), &SocialEnginePersonality::set_enthusiasm);
+	ClassDB::bind_method(D_METHOD("get_enthusiasm"), &SocialEnginePersonality::get_enthusiasm);
+	ClassDB::bind_method(D_METHOD("set_assertiveness", "value"), &SocialEnginePersonality::set_assertiveness);
+	ClassDB::bind_method(D_METHOD("get_assertiveness"), &SocialEnginePersonality::get_assertiveness);
+	ClassDB::bind_method(D_METHOD("set_withdrawal", "value"), &SocialEnginePersonality::set_withdrawal);
+	ClassDB::bind_method(D_METHOD("get_withdrawal"), &SocialEnginePersonality::get_withdrawal);
+	ClassDB::bind_method(D_METHOD("set_volatility", "value"), &SocialEnginePersonality::set_volatility);
+	ClassDB::bind_method(D_METHOD("get_volatility"), &SocialEnginePersonality::get_volatility);
+	ClassDB::bind_method(D_METHOD("set_compassion", "value"), &SocialEnginePersonality::set_compassion);
+	ClassDB::bind_method(D_METHOD("get_compassion"), &SocialEnginePersonality::get_compassion);
+	ClassDB::bind_method(D_METHOD("set_politeness", "value"), &SocialEnginePersonality::set_politeness);
+	ClassDB::bind_method(D_METHOD("get_politeness"), &SocialEnginePersonality::get_politeness);
+	ClassDB::bind_method(D_METHOD("set_industriousness", "value"), &SocialEnginePersonality::set_industriousness);
+	ClassDB::bind_method(D_METHOD("get_industriousness"), &SocialEnginePersonality::get_industriousness);
+	ClassDB::bind_method(D_METHOD("set_orderliness", "value"), &SocialEnginePersonality::set_orderliness);
+	ClassDB::bind_method(D_METHOD("get_orderliness"), &SocialEnginePersonality::get_orderliness);
+	ClassDB::bind_method(D_METHOD("set_openness", "value"), &SocialEnginePersonality::set_openness);
+	ClassDB::bind_method(D_METHOD("get_openness"), &SocialEnginePersonality::get_openness);
+	ClassDB::bind_method(D_METHOD("set_intellect", "value"), &SocialEnginePersonality::set_intellect);
+	ClassDB::bind_method(D_METHOD("get_intellect"), &SocialEnginePersonality::get_intellect);
+
+	// MoralFoundations
+	ClassDB::bind_method(D_METHOD("set_care_harm", "value"), &SocialEnginePersonality::set_care_harm);
+	ClassDB::bind_method(D_METHOD("get_care_harm"), &SocialEnginePersonality::get_care_harm);
+	ClassDB::bind_method(D_METHOD("set_fairness_cheating", "value"), &SocialEnginePersonality::set_fairness_cheating);
+	ClassDB::bind_method(D_METHOD("get_fairness_cheating"), &SocialEnginePersonality::get_fairness_cheating);
+	ClassDB::bind_method(D_METHOD("set_loyalty_betrayal", "value"), &SocialEnginePersonality::set_loyalty_betrayal);
+	ClassDB::bind_method(D_METHOD("get_loyalty_betrayal"), &SocialEnginePersonality::get_loyalty_betrayal);
+	ClassDB::bind_method(D_METHOD("set_authority_subversion", "value"), &SocialEnginePersonality::set_authority_subversion);
+	ClassDB::bind_method(D_METHOD("get_authority_subversion"), &SocialEnginePersonality::get_authority_subversion);
+	ClassDB::bind_method(D_METHOD("set_sanctity_degradation", "value"), &SocialEnginePersonality::set_sanctity_degradation);
+	ClassDB::bind_method(D_METHOD("get_sanctity_degradation"), &SocialEnginePersonality::get_sanctity_degradation);
+	ClassDB::bind_method(D_METHOD("set_liberty_oppression", "value"), &SocialEnginePersonality::set_liberty_oppression);
+	ClassDB::bind_method(D_METHOD("get_liberty_oppression"), &SocialEnginePersonality::get_liberty_oppression);
+
+	// Personality
+	ClassDB::bind_method(D_METHOD("set_intelligence", "value"), &SocialEnginePersonality::set_intelligence);
+	ClassDB::bind_method(D_METHOD("get_intelligence"), &SocialEnginePersonality::get_intelligence);
+	ClassDB::bind_method(D_METHOD("set_maturity", "value"), &SocialEnginePersonality::set_maturity);
+	ClassDB::bind_method(D_METHOD("get_maturity"), &SocialEnginePersonality::get_maturity);
+	ClassDB::bind_method(D_METHOD("set_age", "value"), &SocialEnginePersonality::set_age);
+	ClassDB::bind_method(D_METHOD("get_age"), &SocialEnginePersonality::get_age);
+	ClassDB::bind_method(D_METHOD("set_personality_override", "value"), &SocialEnginePersonality::set_personality_override);
+	ClassDB::bind_method(D_METHOD("get_personality_override"), &SocialEnginePersonality::get_personality_override);
+	ClassDB::bind_method(D_METHOD("set_personality_modifier", "value"), &SocialEnginePersonality::set_personality_modifier);
+	ClassDB::bind_method(D_METHOD("get_personality_modifier"), &SocialEnginePersonality::get_personality_modifier);
+
+	//Setup as Properties
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "enthusiasm"), "set_enthusiasm", "get_enthusiasm");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "assertiveness"), "set_assertiveness", "get_assertiveness");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "withdrawal"), "set_withdrawal", "get_withdrawal");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "volatility"), "set_volatility", "get_volatility");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "compassion"), "set_compassion", "get_compassion");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "politeness"), "set_politeness", "get_politeness");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "industriousness"), "set_industriousness", "get_industriousness");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "orderliness"), "set_orderliness", "get_orderliness");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "openness"), "set_openness", "get_openness");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "intellect"), "set_intellect", "get_intellect");
+	
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "care_harm"), "set_care_harm", "get_care_harm");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "fairness_cheating"), "set_fairness_cheating", "get_fairness_cheating");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "loyalty_betrayal"), "set_loyalty_betrayal", "get_loyalty_betrayal");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "authority_subversion"), "set_authority_subversion", "get_authority_subversion");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "sanctity_degradation"), "set_sanctity_degradation", "get_sanctity_degradation");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "liberty_oppression"), "set_liberty_oppression", "get_liberty_oppression");
+	
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "intelligence"), "set_intelligence", "get_intelligence");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::FLOAT, "maturity"), "set_maturity", "get_maturity");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::INT, "age"), "set_age", "get_age");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::STRING, "personality_override"), "set_personality_override", "get_personality_override");
+	ClassDB::add_property("SocialEnginePersonality", PropertyInfo(Variant::STRING, "personality_modifier"), "set_personality_modifier", "get_personality_modifier");
+
+
+}
+
+
+
+
+
+
+
+
