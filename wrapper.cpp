@@ -26,6 +26,28 @@ bool SocialEngineResponse::is_complete()
 	}
 }
 
+String SocialEngineResponse::get_classification()
+{
+	if (response_ptr) {
+		DialogueType classification = response_ptr->get_classification();
+		return String(get_dialogue_type_name(classification).c_str());
+	}
+	else {
+		return String("Thinking");
+	}
+}
+
+String SocialEngineResponse::get_response_type()
+{
+	if (response_ptr) {
+		DialogueResponseDirection response_direction = response_ptr->get_response_direction();
+		return String(get_response_direction_name(response_direction).c_str());
+	}
+	else {
+		return String("Thinking");
+	}
+}
+
 SocialEngineResponse::SocialEngineResponse()
 {
 }
@@ -66,7 +88,13 @@ Ref<SocialEngineResponse> SocialEngineServer::generate_npc_response(String dialo
 	Appearance appearance = Appearance();//TODO: have this passed in
 	Knowledge knowledge = Knowledge();//TODO: have this passed in
 
-	std::shared_ptr<DialogueResponse> r_ptr = get_npc_response(words, appearance, personality.ptr()->get_underlying_personality(), knowledge);
+	InteractionParameters parameters;
+	parameters.dialogue = words;
+	parameters.personality = personality.ptr()->get_underlying_personality();
+	parameters.appearance = appearance;
+	parameters.knowledge = knowledge;
+
+	std::shared_ptr<DialogueResponse> r_ptr = get_npc_response(parameters);
 	//std::shared_ptr<DialogueResponse> r_ptr = get_default_response(words);
 	//SocialEngineResponse response;
 	//response.set_response_ptr(r_ptr);

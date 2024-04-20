@@ -18,6 +18,8 @@ public:
 
     String get_response();
 	bool is_complete();
+	String get_classification();
+	String get_response_type();
 
 	SocialEngineResponse();
 	void set_response_ptr(std::shared_ptr<DialogueResponse> ptr);
