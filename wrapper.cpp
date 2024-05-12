@@ -59,6 +59,8 @@ void SocialEngineResponse::set_response_ptr(std::shared_ptr<DialogueResponse> pt
 void SocialEngineResponse::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_response"), &SocialEngineResponse::get_response);
 	ClassDB::bind_method(D_METHOD("is_complete"), &SocialEngineResponse::is_complete);
+	ClassDB::bind_method(D_METHOD("get_classification"), &SocialEngineResponse::get_classification);
+	ClassDB::bind_method(D_METHOD("get_response_type"), &SocialEngineResponse::get_response_type);
 }
 
 
